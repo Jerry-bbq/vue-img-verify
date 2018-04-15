@@ -2,7 +2,7 @@
 
 ## 效果图
 
-![效果图](./img/img.png)
+![效果图](.src/img/img.png)
 
 ## 说明
 
@@ -18,11 +18,10 @@
 
 * 接受子组件img-verify 传递的参数
 
-
-	  <ImgVerify @printCanvas="imgCode"/>
-
-	  methods: {
-        mgCode(code){
-          console.log(code)
-        }
-    },
+      <ImgVerify @printCanvas="imgCode"/>
+  
+      methods: {
+          mgCode(code){
+            console.log(code)
+          }
+       },
