@@ -106,7 +106,7 @@
   }
 </script>
 <style type="text/css">
-  .img-verify canvas{
+  .img-verify canvas {
     cursor: pointer;
   }
 </style>

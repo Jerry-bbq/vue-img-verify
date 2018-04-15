@@ -15,23 +15,23 @@
 </template>
 
 <script>
-import ImgVerify from './components/img-verify'
+  import ImgVerify from './components/v-img-verify'
 
-export default {
-  name: 'App',
-  methods: {
-    imgCode(code){
-      console.log(code)
+  export default {
+    name: 'App',
+    methods: {
+      imgCode(code) {
+        console.log(code)
+      }
+    },
+    components: {
+      ImgVerify
     }
-  },
-  components: {
-    ImgVerify
   }
-}
 </script>
 
 <style>
-#app {
+  #app {
 
-}
+  }
 </style>
