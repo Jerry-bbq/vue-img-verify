@@ -21,7 +21,7 @@
       <ImgVerify @printCanvas="imgCode"/>
   
       methods: {
-          mgCode(code){
+          imgCode(code){
             console.log(code)
           }
        },
