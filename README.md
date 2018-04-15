@@ -2,7 +2,7 @@
 
 ## 效果图
 
-![效果图](.src/img/img.png)
+![效果图](./src/img/img.png)
 
 ## 说明
 
