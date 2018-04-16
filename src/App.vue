@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <h3>前端图片验证码：</h3>
-    <ImgVerify @printCanvas="imgCode"/>
+    <ImgVerify @imgCode="imgCode" ref="imgVerify"/>
+    <div style="margin: 20px 0">
+      <button @click="handleClick">点击</button>
+    </div>
     <fieldset>
       <legend>说明：</legend>
       <ul>
@@ -22,6 +25,9 @@
     methods: {
       imgCode(code) {
         console.log(code)
+      },
+      handleClick(){
+        this.$refs.imgVerify.draw()
       }
     },
     components: {

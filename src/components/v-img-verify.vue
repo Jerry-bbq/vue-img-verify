@@ -1,6 +1,10 @@
 <template>
   <div class="img-verify">
-    <canvas ref="verify" :width="width" :height="height" @click="handleDraw"></canvas>
+    <canvas
+      ref="verify"
+      :width="width"
+      :height="height"
+      @click="handleDraw"></canvas>
   </div>
 </template>
 
@@ -14,7 +18,7 @@
       }
     },
     mounted() {
-      this.printCanvas()
+      this.draw()
     },
     methods: {
       // 1.随机数
@@ -30,10 +34,10 @@
       },
       // 点击图片重新绘制
       handleDraw() {
-        this.printCanvas()
+        this.draw()
       },
       // 绘制图片
-      printCanvas() {
+      draw() {
         // 3.填充背景颜色，背景颜色要浅一点
         const ctx = this.$refs.verify.getContext('2d')
         // 填充颜色
@@ -41,12 +45,12 @@
         // 填充的位置
         ctx.fillRect(0, 0, this.width, this.height)
         // 定义paramText
-        let paramText = ''
+        let imgCode = ''
         // 4.随机产生字符串，并且随机旋转
         for (let i = 0; i < 4; i++) {
           // 随机的四个字
           const text = this.pool[this.randomNum(0, this.pool.length)]
-          paramText += text
+          imgCode += text
           // 随机的字体大小
           const fontSize = this.randomNum(18, 40)
           // 字体随机的旋转角度
@@ -100,7 +104,7 @@
           ctx.fill()
         }
         // 将生成的四个字传递给父组件
-        this.$emit('printCanvas', paramText)
+        this.$emit('imgCode', imgCode)
       }
     }
   }
