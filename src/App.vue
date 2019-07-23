@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h3>前端图片验证码：</h3>
-    <ImgVerify @imgCode="imgCode" ref="imgVerify"/>
+    <vue-img-verify @getImgCode="getImgCode" ref="vueImgVerify" />
     <div style="margin: 20px 0">
       <button @click="handleClick">点击</button>
     </div>
@@ -18,26 +18,29 @@
 </template>
 
 <script>
-  import ImgVerify from './components/v-img-verify'
+import vueImgVerify from './components/vue-img-verify'
 
-  export default {
-    name: 'App',
-    methods: {
-      imgCode(code) {
-        console.log(code)
-      },
-      handleClick(){
-        this.$refs.imgVerify.draw()
-      }
-    },
-    components: {
-      ImgVerify
+export default {
+  name: 'App',
+  data() {
+    return {
+      imgCode: ''
     }
+  },
+  methods: {
+    // 点击图片获取验证码
+    getImgCode(code) {
+      this.imgCode = code
+      console.log('验证码: ' + this.imgCode)
+    },
+    // 点击按钮获取验证码
+    handleClick() {
+      this.imgCode = this.$refs.vueImgVerify.draw()
+      console.log('验证码: ' + this.imgCode)
+    }
+  },
+  components: {
+    vueImgVerify
   }
+}
 </script>
-
-<style>
-  #app {
-
-  }
-</style>

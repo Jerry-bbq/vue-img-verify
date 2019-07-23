@@ -1,56 +1,59 @@
-## vue的前端图形验证码组件
+## 前端图形验证码组件
 
-## 效果图
+### 效果图
 
 ![效果图](./src/img/img.png)
 
-## 说明
+### 说明
 
-* 使用canvas实现
+- 使用canvas实现
 
-* 4位，数字加大写字母的验证码
+- 4位，数字加大写字母的验证码
 
-* 点击可以实现图片的变化
+- 点击可以实现图片的变化
 
-      父组件：
-      <ImgVerify @draw="imgCode" ref='imgVerify'/>
-  
-      methods: {
-          imgCode(code){
-            console.log(code)
-          }
-       },
+### 使用
 
-* 父组件调用子组件的方法来实现图形的变化
-      
-      父组件：
-      <ImgVerify @draw="imgCode" ref='imgVerify'/>
-      <button @click="handleClick">点击</botton>  
-      methods: {
-        handleClick(){
-          this.$refs.imgVerify.draw()
-        }
-      },
+1.克隆项目，主要代码在`src/components/vue-img-verify.vue`中
+``` bash
+git clone https://github.com/luguanrui/vue-img-verify.git
+```
+2.演示代码
 
-## 使用
+DOM:
 
-* 下载组件v-img-verify
+``` javascript
+<vue-img-verify @getImgCode="getImgCode" ref="vueImgVerify" />
+```
 
-* 父组件
+JS:
 
-		<ImgVerify @imgCode="imgCode" ref="imgVerify"/>
-		
-		  export default {
-		    name: 'App',
-		    methods: {
-		      imgCode(code) {
-		        console.log(code)
-		      },
-		      handleClick(){
-		        this.$refs.imgVerify.draw()
-		      }
-		    },
-		    components: {
-		      ImgVerify
-		    }
-		  }
+``` javascript
+<script>
+import vueImgVerify from './components/vue-img-verify'
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      imgCode: ''
+    }
+  },
+  methods: {
+    // 点击图片获取验证码
+    getImgCode(code) {
+      this.imgCode = code
+      console.log('验证码: ' + this.imgCode)
+    },
+    // 点击按钮获取验证码
+    handleClick() {
+      this.imgCode = this.$refs.vueImgVerify.draw()
+      console.log('验证码: ' + this.imgCode)
+    }
+  },
+  components: {
+    vueImgVerify
+  }
+}
+</script>
+```
