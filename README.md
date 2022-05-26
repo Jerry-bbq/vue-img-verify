@@ -1,59 +1,57 @@
-## 前端图形验证码组件
+# 图形验证码
 
-### 效果图
+![image](./src/assets/image.png)
 
-![效果图](./src/img/img.png)
-
-### 说明
-
-- 使用canvas实现
-
-- 4位，数字加大写字母的验证码
-
+- 基于`canvas`实现
+- 4位数图形验证码，数字加大小写字母
 - 点击可以实现图片的变化
 
-### 使用
+## 说明
 
-1.克隆项目，主要代码在`src/components/vue-img-verify.vue`中
-``` bash
-git clone https://github.com/luguanrui/vue-img-verify.git
-```
-2.演示代码
+定义`ImageVerify`类
 
-DOM:
+参数：
 
-``` javascript
-<vue-img-verify @getImgCode="getImgCode" ref="vueImgVerify" />
-```
+| api | 说明 |
+|--|--|
+| id | canvas标签的唯一id，必填项 |
+| width | canvas的宽度，默认 `90`|
+| height | canvas的高度，默认 `48`| 
 
-JS:
+> 常言道重口难调，不满足需求的可`clone`之后自行更改
 
-``` javascript
+## demo
+
+```vue
+<template>
+  <div>
+    <canvas id="canvas" width="90" height="48" @click="handleClick"></canvas>
+  </div>
+</template>
+
 <script>
-import vueImgVerify from './components/vue-img-verify'
+import ImageVerify from "./components/image-verify.js";
 
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
-      imgCode: ''
-    }
+      canvas: "",
+    };
+  },
+  mounted() {
+    this.canvas = new ImageVerify({
+      id: 'canvas',
+      width: 90,
+      height: 48,
+    });
   },
   methods: {
-    // 点击图片获取验证码
-    getImgCode(code) {
-      this.imgCode = code
-      console.log('验证码: ' + this.imgCode)
-    },
-    // 点击按钮获取验证码
     handleClick() {
-      this.imgCode = this.$refs.vueImgVerify.draw()
-      console.log('验证码: ' + this.imgCode)
-    }
+      this.canvas.start();
+      console.log(this.canvas.code);
+    },
   },
-  components: {
-    vueImgVerify
-  }
-}
+};
 </script>
 ```
