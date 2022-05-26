@@ -11,11 +11,11 @@ export default {
   name: "App",
   data() {
     return {
-      canvas: "",
+      imageVerify: "",
     };
   },
   mounted() {
-    this.canvas = new ImageVerify({
+    this.imageVerify = new ImageVerify({
       id: 'canvas',
       width: 90,
       height: 48,
@@ -23,8 +23,8 @@ export default {
   },
   methods: {
     handleClick() {
-      this.canvas.start();
-      console.log(this.canvas.code);
+      this.imageVerify.start();
+      console.log(this.imageVerify.code);
     },
   },
 };
